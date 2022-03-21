@@ -211,6 +211,7 @@ function setBotResponse(response) {
                     if (payload === "visualization_content"){
                       const data = JSON.parse(response[i].custom.data)
                       console.log(data)
+                      console.log("yoooooo")
                       if (data.hasOwnProperty("sector_description")) {
                         document.getElementById('sectorPresentation').innerHTML = data.sector_description
                       }
