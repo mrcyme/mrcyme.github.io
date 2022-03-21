@@ -49,40 +49,6 @@
     <link rel="stylesheet" type="text/css" href="static/css/style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <!--Import websocket and get businesscases and sector presentation-->
-    <script>
-    let connection = new WebSocket("ws://localhost:8765/")
-    let resultsCopy = ""
-    let sectorPresentationCopy = ""
-    connection.onmessage = function(event){
-    let results = JSON.parse(event.data).results
-    let sectorPresentation = JSON.parse(event.data).sector_presentation
-    let businessCases = ""
-    for(var ctr = 0; ctr < results.length; ctr++){
-      businessCases +=`
-      <li>
-      <div class='wrap-collabsible'>
-      <input id=${ctr} class='toggle' type='checkbox'>
-      <label for=${ctr} class='lbl-toggle'>${results[ctr].description}</label><div class='collapsible-content'>
-        <div class='content-inner'>
-        <p>Source : <a href=${results[ctr].source}>${results[ctr].source}</a></p>
-        ${results[ctr].html}
-        </div>
-        </div>
-        </div>
-      </li>`
-    }
-    //change the business case list only if data has changed
-    if(JSON.stringify(results) != JSON.stringify(resultsCopy)){
-      document.getElementById('businessCases').innerHTML = businessCases
-      }
-    if(sectorPresentation != sectorPresentationCopy){
-      document.getElementById('sectorPresentation').innerHTML = sectorPresentation
-      }
-    resultsCopy=results
-    sectorPresentationCopy=sectorPresentation
-    }
-    </script>
 
   </head>
 
@@ -92,7 +58,6 @@
     <p style="font-size:160%;" id="sectorPresentation"></p>
     <h2>Business cases suggestions: </h2>
     <ul id= "businessCases"></ul>
-
     <div class="container">
       <!-- Modal for rendering the charts, declare this if you want to render charts,
          else you remove the modal -->

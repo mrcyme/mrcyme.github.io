@@ -2,11 +2,14 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
+ul {
+list-style: circle;
+display: list-item;
+margin-left: 2em;
+}
 /* ============= css related to chats =============== */
 
-.list-style {
-  square;
-}
+
 
 .wrap-collabsible {
   margin: 1.2rem 3rem;
@@ -20,7 +23,7 @@ body {
   text-align: center;
   padding: 1rem;
   color: #DDD;
-  background: #0069ff;
+  background: #ce7e00;
   cursor: pointer;
   border-radius: 7px;
   transition: all 0.25s ease-out;
@@ -53,7 +56,7 @@ body {
 }
 
 .toggle:checked + .lbl-toggle + .collapsible-content {
-  max-height: 2000px;
+  max-height: 3000px;
 }
 
 .toggle:checked+.lbl-toggle {
@@ -697,7 +700,7 @@ div.content_data::-webkit-scrollbar {
   word-wrap: break-word;
 }
 
-.dropDownMsg > select {
+.dropDownMsg > select multiple{
   border: 0px solid #f2f2f2;
 }
 

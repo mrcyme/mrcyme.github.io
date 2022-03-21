@@ -24,7 +24,7 @@ function setUserResponse(message) {
 
 
 /**
- * returns formatted bot response 
+ * returns formatted bot response
  * @param {String} text bot message response's text
  *
  */
@@ -207,6 +207,31 @@ function setBotResponse(response) {
                         const { data } = response[i].custom;
                         // pass the data variable to createCollapsible function
                         createCollapsible(data);
+                    }
+                    if (payload === "visualization_content"){
+                      const data = JSON.parse(response[i].custom.data)
+                      console.log(data)
+                      if (data.hasOwnProperty("sector_description")) {
+                        document.getElementById('sectorPresentation').innerHTML = data.sector_description
+                      }
+                      const businessCases = data.business_cases;
+                      let businessCasesHTML = ""
+                      for(var ctr = 0; ctr < businessCases.length; ctr++){
+                        businessCasesHTML +=`
+                        <li>
+                        <div class='wrap-collabsible'>
+                        <input id=${ctr} class='toggle' type='checkbox'>
+                        <label for=${ctr} class='lbl-toggle'>${businessCases[ctr].description}</label><div class='collapsible-content'>
+                          <div class='content-inner'>
+                          <p>Source : <a href=${businessCases[ctr].source}>${businessCases[ctr].source}</a></p>
+                          ${businessCases[ctr].html}
+                          </div>
+                          </div>
+                          </div>
+                        </li>`
+                      }
+                      document.getElementById('businessCases').innerHTML = businessCasesHTML
+
                     }
                 }
             }
