@@ -16,6 +16,7 @@ include('./static/js/components/botTyping.js');
 include('./static/js/components/charts.js');
 include('./static/js/components/collapsible.js');
 include('./static/js/components/dropDown.js');
+include('./static/js/components/multiDropDown.js');
 include('./static/js/components/location.js');
 include('./static/js/components/pdfAttachment.js');
 include('./static/js/components/quickReplies.js');

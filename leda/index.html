@@ -54,17 +54,26 @@
 
 
   <body>
-    <div id="rich-text-body"></div>
-    <p style="font-size:160%;" id="sectorPresentation"></p>
-    <h2>Business cases suggestions: </h2>
-    <ul id= "businessCases"></ul>
-    <div class="container">
-      <!-- Modal for rendering the charts, declare this if you want to render charts,
-         else you remove the modal -->
-      <div id="modal1" class="modal">
-        <canvas id="modal-chart"></canvas>
+    <div class="row">
+      <div class="column">
+        <p id="sectorDescription"></p>
+        <p>business case suggestion : </p>
+        <ul id="ressources"></ul>
       </div>
+      <div class="column">
+        <p id="visualization"></p>
+      </div>
+    </div>
 
+
+    <div class="row">
+       <div class="column">
+         <p style="font-size:160%;" id="sectorPresentation"></p>
+       </div>
+       <div class="column">
+         <ul id= "businessCases"></ul>
+       </div>
+     </div>
       <!--chatbot widget -->
       <div class="widget">
         <div class="chat_header">

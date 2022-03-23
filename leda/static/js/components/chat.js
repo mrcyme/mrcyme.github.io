@@ -146,6 +146,13 @@ function setBotResponse(response) {
                         return;
                     }
 
+                    // check if the custom payload type is "dropDown"
+                    if (payload === "multiDropDown") {
+                        const dropDownData = response[i].custom.data;
+                        renderMultiDropDwon(dropDownData);
+                        return;
+                    }
+
                     // check if the custom payload type is "location"
                     if (payload === "location") {
                         $("#userInput").prop("disabled", true);
@@ -210,28 +217,38 @@ function setBotResponse(response) {
                     }
                     if (payload === "visualization_content"){
                       const data = JSON.parse(response[i].custom.data)
-                      console.log(data)
-                      console.log("yoooooo")
                       if (data.hasOwnProperty("sector_description")) {
-                        document.getElementById('sectorPresentation').innerHTML = data.sector_description
+                        var sectorDescription = document.getElementById('sectorDescription')
+                        sectorDescription.innerHTML = '';
+                        var inputElement = document.createElement('button');
+                        inputElement.textContent = "How AI is disrupting you sector ?"
+                        inputElement.setAttribute("content", data["sector_description"]);
+                        function displayContent(evt){
+                          document.getElementById('visualization').innerHTML = evt.target.getAttribute("content")
+                        }
+                        inputElement.addEventListener('click', displayContent);
+                        sectorDescription.appendChild(inputElement);
+                        const event = new Event('click');
+                        inputElement.dispatchEvent(event)
+
                       }
                       const businessCases = data.business_cases;
-                      let businessCasesHTML = ""
+                      var contentList = document.getElementById('ressources')
+                      contentList.innerHTML = '';
                       for(var ctr = 0; ctr < businessCases.length; ctr++){
-                        businessCasesHTML +=`
-                        <li>
-                        <div class='wrap-collabsible'>
-                        <input id=${ctr} class='toggle' type='checkbox'>
-                        <label for=${ctr} class='lbl-toggle'>${businessCases[ctr].description}</label><div class='collapsible-content'>
-                          <div class='content-inner'>
-                          <p>Source : <a href=${businessCases[ctr].source}>${businessCases[ctr].source}</a></p>
-                          ${businessCases[ctr].html}
-                          </div>
-                          </div>
-                          </div>
-                        </li>`
+                        var entry = document.createElement('li');
+                        var inputElement = document.createElement('button');
+                        inputElement.textContent = businessCases[ctr].description
+                        inputElement.setAttribute("content", businessCases[ctr].html);
+                        function displayContent(evt){
+                          document.getElementById('visualization').innerHTML = evt.target.getAttribute("content")
+                        }
+                        inputElement.addEventListener('click', displayContent);
+                        entry.appendChild(inputElement)
+                        contentList.appendChild(entry);
+
+                        //document.getElementById('ressources').innerHTML+= `<li><button class=".button" onClick="displayContent()">${businessCases[ctr].description}</button></li>`
                       }
-                      document.getElementById('businessCases').innerHTML = businessCasesHTML
 
                     }
                 }
@@ -242,6 +259,8 @@ function setBotResponse(response) {
     }, 500);
 
 }
+
+
 
 /**
  * sends the user message to the rasa server,
@@ -374,6 +393,7 @@ function restartConversation() {
     $(".chats").html("");
     $(".usrInput").val("");
     send("/restart");
+    send("hi");
 }
 // triggers restartConversation function.
 $("#restart").click(() => {
