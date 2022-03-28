@@ -217,14 +217,19 @@ function setBotResponse(response) {
                     }
                     if (payload === "visualization_content"){
                       const data = JSON.parse(response[i].custom.data)
+                      console.log(data)
                       if (data.hasOwnProperty("sector_description")) {
                         var sectorDescription = document.getElementById('sectorDescription')
                         sectorDescription.innerHTML = '';
                         var inputElement = document.createElement('button');
-                        inputElement.textContent = "How AI is disrupting you sector ?"
-                        inputElement.setAttribute("content", data["sector_description"]);
+                        inputElement.className = 'button_sector'
+                        var title = `How is AI disrupting the ${data["sector_description"]["sector"]} sector ?`
+                        inputElement.textContent = title
+                        inputElement.setAttribute("content", data["sector_description"]["description"]);
+                        inputElement.setAttribute("title", `<h3>${title}</h3>`);
                         function displayContent(evt){
-                          document.getElementById('visualization').innerHTML = evt.target.getAttribute("content")
+                          document.getElementById('visualization').innerHTML = evt.target.getAttribute("title")
+                          document.getElementById('visualization').innerHTML += evt.target.getAttribute("content")
                         }
                         inputElement.addEventListener('click', displayContent);
                         sectorDescription.appendChild(inputElement);
@@ -234,14 +239,18 @@ function setBotResponse(response) {
                       }
                       const businessCases = data.business_cases;
                       var contentList = document.getElementById('ressources')
+                      document.getElementById("ressources_title").style.display = "block";
                       contentList.innerHTML = '';
                       for(var ctr = 0; ctr < businessCases.length; ctr++){
                         var entry = document.createElement('li');
                         var inputElement = document.createElement('button');
                         inputElement.textContent = businessCases[ctr].description
                         inputElement.setAttribute("content", businessCases[ctr].html);
+                        inputElement.setAttribute("title", `<h3>${businessCases[ctr].description}</h3>`);
+
                         function displayContent(evt){
-                          document.getElementById('visualization').innerHTML = evt.target.getAttribute("content")
+                          document.getElementById('visualization').innerHTML = evt.target.getAttribute("title")
+                          document.getElementById('visualization').innerHTML += evt.target.getAttribute("content")
                         }
                         inputElement.addEventListener('click', displayContent);
                         entry.appendChild(inputElement)

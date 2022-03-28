@@ -16,16 +16,60 @@ margin-left: 2em;
   flex: 50%;
 }
 
-.button {
-   	background-color: #8C6D09;
+button {
+   	background-color: #0000ff;
    	color: white;
+    width: 600px;
+    font-size: 18px;
    	padding: 16px 32px;
    	display:inline-block;
    	margin:4px 2px;
    	-webkit-transition-duration: 0.4s; /* Safari */
      transition-duration: 0.4s;
 }
-/* ============= css related to chats =============== */
+
+.button_sector {
+  background-color: #00b300;
+
+}
+
+.multiselect {
+  width: 200px;
+}
+
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  font-weight: bold;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+#checkboxes {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+#checkboxes label {
+  display: block;
+}
+
+#checkboxes label:hover {
+  background-color: #1e90ff;
+}
+
+
+/* ==
+=========== css related to chats =============== */
 
 
 
@@ -722,27 +766,9 @@ div.content_data::-webkit-scrollbar {
   border: 0px solid #f2f2f2;
 }
 /*css for multidropDown messages*/
-.multiDropDownMsg {
-  float: left;
-  margin-top: 5px;
-  background: white;
-  color: black;
-  box-shadow: 2px 3px 9px 0px #9a82842e;
-  margin-left: 0.5em;
-  padding: 10px;
-  border-radius: 1.5em;
-  max-width: 60%;
-  min-width: 25%;
-  font-size: 15px;
-  word-wrap: break-word;
-}
 
-.multiDropDownMsg > select {
-  padding: 10px;
-  width: 200px;
-  font-size:16px;
-  border: 0;
-  border-bottom: 3px solid teal;
+.multiselect-container>li>a>label {
+  padding: 4px 20px 3px 20px;
 }
 
 /* css for quick replies */

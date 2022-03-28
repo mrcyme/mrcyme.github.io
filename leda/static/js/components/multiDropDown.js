@@ -8,6 +8,19 @@ function renderMultiDropDwon(drop_down_data) {
     for (let i = 0; i < drop_down_data.length; i += 1) {
         drop_down_options += `<option value="${drop_down_data[i].value}">${drop_down_data[i].label}</option>`;
     }
+    const drop_down_select_2 =`<form><div class="multiDropDownMsg"><div class="selectBox"><select><option>Select an option</option></select>
+      <div class="overSelect"></div>
+    </div>
+    <div id="checkboxes">
+      <label for="one">
+        <input type="checkbox" id="one" />First checkbox</label>
+      <label for="two">
+        <input type="checkbox" id="two" />Second checkbox</label>
+      <label for="three">
+        <input type="checkbox" id="three" />Third checkbox</label>
+    </div>
+  </div>
+  <form/>`
     const drop_down_select = `<div class="multiDropDownMsg"><select id="multi_select" class="browser-default dropDownSelect" multiple> <option value="" disabled selected>Choose your option(s)</option>${drop_down_options}</select><input type="button" id="submit_values" value="send"/></div>`;
     $(".chats").append(drop_down_select);
     scrollToBottomOfResults();
