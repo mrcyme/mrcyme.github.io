@@ -136,20 +136,20 @@ function setBotResponse(response) {
                     // check if the custom payload type is "pdf_attachment"
                     if (payload === "pdf_attachment") {
                         renderPdfAttachment(response[i]);
-                        return;
+                        //return;
                     }
 
                     // check if the custom payload type is "dropDown"
                     if (payload === "dropDown") {
                         const dropDownData = response[i].custom.data;
-                        renderDropDwon(dropDownData);
+                        renderDropDown(dropDownData);
                         return;
                     }
 
                     // check if the custom payload type is "dropDown"
                     if (payload === "multiDropDown") {
                         const dropDownData = response[i].custom.data;
-                        renderMultiDropDwon(dropDownData);
+                        renderMultiDropDown(dropDownData);
                         return;
                     }
 
@@ -217,8 +217,8 @@ function setBotResponse(response) {
                     }
                     if (payload === "visualization_content"){
                       const data = JSON.parse(response[i].custom.data)
-                      console.log(data)
                       if (data.hasOwnProperty("sector_description")) {
+                        document.getElementById('instruction').style.display = "none"
                         var sectorDescription = document.getElementById('sectorDescription')
                         sectorDescription.innerHTML = '';
                         var inputElement = document.createElement('button');
@@ -243,6 +243,7 @@ function setBotResponse(response) {
                       contentList.innerHTML = '';
                       for(var ctr = 0; ctr < businessCases.length; ctr++){
                         var entry = document.createElement('li');
+                        entry.className = "BusinessCase";
                         var inputElement = document.createElement('button');
                         inputElement.textContent = businessCases[ctr].description
                         inputElement.setAttribute("content", businessCases[ctr].html);
@@ -424,6 +425,7 @@ $(".usrInput").on("keyup keypress", (e) => {
         // destroy the existing chart, if yu are not using charts, then comment the below lines
         $(".collapsible").remove();
         $(".dropDownMsg").remove();
+        $(".multiDropDownMsg").remove();
         if (typeof chatChart !== "undefined") {
             chatChart.destroy();
         }

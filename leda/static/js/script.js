@@ -1,4 +1,5 @@
 /* module for importing other js files */
+
 function include(file) {
   const script = document.createElement('script');
   script.src = file;
@@ -7,8 +8,10 @@ function include(file) {
 
   document.getElementsByTagName('head').item(0).appendChild(script);
 }
+include('./static/js/components/index.js');
 
 
+/*
 // Bot pop-up intro
 document.addEventListener("DOMContentLoaded", () => {
   const elemsTap = document.querySelector(".tap-target");
@@ -19,11 +22,11 @@ document.addEventListener("DOMContentLoaded", () => {
     instancesTap.close();
   }, 4000);
 });
+*/
 
 /* import components */
-include('./static/js/components/index.js');
-
 window.addEventListener('load', () => {
+
   // initialization
   $(document).ready(() => {
     // Bot pop-up intro
