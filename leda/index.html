@@ -92,7 +92,7 @@
         <iframe
           width="672"
           height="378"
-          src="https://player.vimeo.com/video/523957836?h=73db910117"
+          src="https://www.youtube.com/embed/V9jbEJ2ObME"
           title="YouTube video player"
           frameborder="10"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -188,7 +188,25 @@
     <section class="contact" id="contact" style="display: none">
       <h3>Simeon Michel</h3><br>
       <p>simeon.michel@ehb.be</p>
-      </section>
+    </section>
+    <section class="lexicon" id="lexicon" style="display: none">
+      <table>
+       <tr>
+         <th>Word</th>
+         <th>Definition</th>
+       </tr>
+       <tr>
+         <td>Predictive analysis</td>
+         <td>Predictive analytics is the use of data, statistical algorithms and machine learning techniques to identify the likelihood of future outcomes based on historical data. The goal is to go beyond knowing what has happened to providing a best assessment of what will happen in the future.</td>
+       </tr>
+       <tr>
+         <td>Classification</td>
+         <td>Classification is a process related to categorization, the process in which ideas and objects are recognized, differentiated and understood.</td>
+       </tr>
+      </table>
+    </section>
+
+
     <footer>&copy;2022. All Rights Reserved</footer>
     <script>
     const router = new Navigo("/");
@@ -196,17 +214,22 @@
       document.getElementById("app").style.display = "none";
       document.getElementById("contact").style.display = "none";
       document.getElementById("about").style.display = "flex";
+      document.getElementById("lexicon").style.display = "none";
     });
     router.on("/leda/app", function (match) {
       document.getElementById("app").style.display = "flex";
       document.getElementById("contact").style.display = "none";
       document.getElementById("about").style.display = "none";
+      document.getElementById("lexicon").style.display = "none";
     });
     router.on("/leda/contact", function (match) {
       document.getElementById("app").style.display = "none";
       document.getElementById("about").style.display = "none";
       document.getElementById("contact").style.display = "flex";
+      document.getElementById("lexicon").style.display = "none";
     });
+
+
     </script>
     <script
       type="text/javascript"
