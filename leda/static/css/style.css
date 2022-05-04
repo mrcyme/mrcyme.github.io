@@ -135,13 +135,16 @@ body {
   transition: var(--transition);
 }
 
-
-
 ul li {
 list-style: circle;
 display: list-item;
 margin-left: 2em;
 }
+
+.ressources li {
+list-style: none;
+}
+
 
 .row {
   display: flex;
@@ -457,6 +460,9 @@ blockquote {
 .dropdown-content li > a,
 .dropdown-content li > span {
   color: #060dcfc7;
+}
+.dropdown-content li {
+  list-style: none;
 }
 
 @keyframes animateElement {
