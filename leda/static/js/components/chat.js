@@ -248,9 +248,11 @@ function setBotResponse(response) {
                         inputElement.textContent = businessCases[ctr].description
                         inputElement.setAttribute("content", businessCases[ctr].html);
                         inputElement.setAttribute("title", `<h3>${businessCases[ctr].description}</h3>`);
+                        inputElement.setAttribute("source", `<p>Source : <a href="${businessCases[ctr].source}">${businessCases[ctr].source}</a></p>`);
 
                         function displayContent(evt){
                           document.getElementById('visualization').innerHTML = evt.target.getAttribute("title")
+                          document.getElementById('visualization').innerHTML += evt.target.getAttribute("source")
                           document.getElementById('visualization').innerHTML += evt.target.getAttribute("content")
                         }
                         inputElement.addEventListener('click', displayContent);

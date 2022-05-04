@@ -43,6 +43,9 @@ nav {
   color: #fff;
 }
 
+p {
+  margin: 1;
+}
 
 .landing-page{
   display: flex;
